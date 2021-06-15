@@ -38,9 +38,16 @@ export default {
   methods: {
     pridatRadek(e) {
       e.preventDefault();
-      const novyRadek = {
-        id: this.obsah.radky[this.obsah.radky.length - 1].id + 1,
-      };
+      let novyRadek;
+      if (this.obsah.radky.length > 0) {
+        novyRadek = {
+          id: this.obsah.radky[this.obsah.radky.length - 1].id + 1,
+        };
+      } else {
+        novyRadek = {
+          id: 1,
+        };
+      }
       for (let i = 1; i < this.obsah.sloupce.length; i++) {
         const sloupecKey = this.obsah.sloupce[i].key;
         novyRadek[sloupecKey] = this.obsahPridavani[sloupecKey];
